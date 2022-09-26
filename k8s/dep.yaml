@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back-app-rpc
+  labels:
+    app: backrpc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backrpc
+  template:
+    metadata:
+      labels:
+        app: backrpc
+    spec:
+      containers:
+      - image: diegokrule/httpsrv:0.0.20
+        name: front
+        ports:
+          - containerPort: 10000
